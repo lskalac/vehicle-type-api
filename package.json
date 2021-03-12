@@ -1,0 +1,38 @@
+{
+  "name": "vehicletype",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon src/index.ts"
+  },
+  "author": "Lorena Škalac",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "5.0.1",
+    "body-parser": "1.19.0",
+    "class-transformer": "0.4.0",
+    "class-validator": "0.13.1",
+    "dotenv": "8.2.0",
+    "express": "4.17.1",
+    "jsonwebtoken": "8.5.1",
+    "mongoose": "5.11.19",
+    "swagger-jsdoc": "5.0.1",
+    "swagger-ui-express": "4.1.6",
+    "tsyringe": "4.4.0",
+    "uuid": "8.3.2",
+    "winston": "3.3.3"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "3.0.0",
+    "@types/express": "4.17.11",
+    "@types/jsonwebtoken": "8.5.0",
+    "@types/mongoose": "5.10.3",
+    "@types/swagger-jsdoc": "6.0.0",
+    "@types/swagger-ui-express": "4.1.2",
+    "@types/uuid": "8.3.0",
+    "nodemon": "2.0.7",
+    "reflect-metadata": "0.1.13"
+  }
+}

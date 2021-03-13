@@ -18,8 +18,8 @@ export class VehicleController
 
     FindAsync = async (req: Request, res: Response, next: NextFunction) => {
         const searchTerm = req.query.searchTerm?.toString();
-        const page = !req.query.page || !isNaN(+req.query.page) ? 1 : Number(req.query.page);
-        const rpp = !req.query.rpp || !isNaN(+req.query.rpp) ? 10 : Number(req.query.rpp);
+        const page = !req.query.page || isNaN(+req.query.page) ? 1 : Number(req.query.page);
+        const rpp = !req.query.rpp || isNaN(+req.query.rpp) ? 10 : Number(req.query.rpp);
 
         const result = await this._vehicleService.FindAsync(searchTerm, page, rpp);
         const count = await this._vehicleService.CountAsync(searchTerm);

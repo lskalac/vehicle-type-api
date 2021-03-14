@@ -2,6 +2,8 @@ import { Router } from "express";
 import { container } from "tsyringe";
 import { VehicleController } from "../controllers/VehicleController";
 import auth from "../midllewares/auth";
+import validateBody from "../midllewares/validateBody";
+import { VehicleRest } from "../rest-models/VehicleRest";
 
 const vehicleController = container.resolve(VehicleController);
 
@@ -9,7 +11,7 @@ const vehicleRouter = Router();
 
 vehicleRouter.get("", vehicleController.FindAsync);
 vehicleRouter.get("/:id", vehicleController.GetByAsync);
-vehicleRouter.post("", auth(), vehicleController.PostAsync);
+vehicleRouter.post("", auth(), validateBody(VehicleRest), vehicleController.PostAsync);
 vehicleRouter.delete("/:id", auth(), vehicleController.DeleteAsync);
 
 export default vehicleRouter;

@@ -45,9 +45,15 @@ export class VehicleController
         const vehicle: IVehicle = new Vehicle({
             id: v4(),
             make: body.make,
-            model: body.model,
+            vmodel: body.model,
             year: body.year
         });
+
+        const result = await this._vehicleService.PostAsync(vehicle);
+        if(!result)
+            return res.status(500).end();
+
+        return res.status(200).json(result);
     }
 
     DeleteAsync = async (req: Request, res: Response, next: NextFunction) => {

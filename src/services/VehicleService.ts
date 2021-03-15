@@ -42,7 +42,7 @@ export default class VehicleService
     {
         const schema: IVehicle = new Vehicle({
             make: make,
-            model: model, 
+            vmodel: model, 
             year: year
         });
         

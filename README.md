@@ -7,5 +7,6 @@ Steps to run: npm install + npm start
 
 Class validator + class transform is used for validating request query and body.
 Winston for logging errors.
+Jwt is user for signing user and bcrypt for crypitng password.
 
-Project is separated to two layers. Since project is small and doens't containt some complex logic, repository logic is skipped.
+Project is separated in two layers: api + service. Since project is small, repository layer is skipped.

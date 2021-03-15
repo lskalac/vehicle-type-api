@@ -38,9 +38,15 @@ export default class VehicleService
         return Vehicle.findOne({make: make, model: model, year: year});
     }
 
-    PostAsync = (vehicle: IVehicle): Promise<IVehicle> => 
+    PostAsync = (make: string, model: string, year: number): Promise<IVehicle> => 
     {
-        return Vehicle.create(vehicle);
+        const schema: IVehicle = new Vehicle({
+            make: make,
+            model: model, 
+            year: year
+        });
+        
+        return Vehicle.create(schema);
     }
 
     DeleteAsync = async (id: string): Promise<boolean> => 

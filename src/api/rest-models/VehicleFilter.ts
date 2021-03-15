@@ -1,20 +1,19 @@
-import { Transform } from "class-transformer";
-import { IsInt, IsOptional, Min } from "class-validator";
+import { Expose, Transform } from "class-transformer";
+import { IsNumberString, IsOptional } from "class-validator";
 
 export default class VehicleFilter
 {
+    @Expose()
     @IsOptional()
-    @Transform(value => value ? Number(value) : value)
-    @IsInt()
-    @Min(1)
+    @IsNumberString()
     page: number;
 
+    @Expose()
     @IsOptional()
-    @Transform(value => value ? Number(value) : value)
-    @IsInt()
-    @Min(1)
+    @IsNumberString()
     rpp: number;
 
+    @Expose()
     @IsOptional()
     searchTerm: string;
 }

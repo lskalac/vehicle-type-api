@@ -5,6 +5,7 @@ import { IVehicle } from "../../types/IVehicle";
 import { v4 } from "uuid";
 import Vehicle from "../../models/Vehicle";
 import { VehicleRest } from "../rest-models/VehicleRest";
+import VehicleFilter from "../rest-models/VehicleFilter";
 
 @injectable()
 export class VehicleController
@@ -17,12 +18,10 @@ export class VehicleController
     }
 
     FindAsync = async (req: Request, res: Response, next: NextFunction) => {
-        const searchTerm = req.query.searchTerm?.toString();
-        const page = !req.query.page || isNaN(+req.query.page) ? 1 : Number(req.query.page);
-        const rpp = !req.query.rpp || isNaN(+req.query.rpp) ? 10 : Number(req.query.rpp);
+        const filter: VehicleFilter = res.locals.filter;
 
-        const result = await this._vehicleService.FindAsync(searchTerm, page, rpp);
-        const count = await this._vehicleService.CountAsync(searchTerm);
+        const result = await this._vehicleService.FindAsync(filter.searchTerm, filter.page, filter.rpp);
+        const count = await this._vehicleService.CountAsync(filter.searchTerm);
         return res.status(200).json({
             total: count,
             items: result

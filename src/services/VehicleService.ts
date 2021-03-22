@@ -35,7 +35,7 @@ export default class VehicleService
 
     GetByName = async (make: string, model: string, year: number): Promise<IVehicle | null> => 
     {
-        return Vehicle.findOne({make: make, model: model, year: year});
+        return Vehicle.findOne({make: make, vmodel: model, year: year});
     }
 
     PostAsync = (make: string, model: string, year: number): Promise<IVehicle> => 

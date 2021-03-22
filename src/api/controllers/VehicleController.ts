@@ -50,6 +50,10 @@ export class VehicleController
         const body: VehicleRest = res.locals.body;
 
         try {
+            const existingVehicle = await this._vehicleService.GetByName(body.make, body.model, body.year);
+            if(existingVehicle)
+                return res.status(409).json({message: "Vehicle already exists."});
+
             const result = await this._vehicleService.PostAsync(body.make, body.model, body.year);
             if(!result)
                 return res.status(500).end();
